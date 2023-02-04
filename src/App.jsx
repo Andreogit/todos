@@ -12,7 +12,6 @@ function App() {
   const [firstLoad, setFirstLoad] = useState(true);
   const [selectedTitleSort, setSelectedTitleSort] = useState("");
   const [selectedCompletionSort, setSelectedCompletionSort] = useState("")
-
   useEffect(() => {
     let todoItems = window.localStorage.getItem("todos");
     setTodos(JSON.parse(todoItems));
@@ -20,6 +19,11 @@ function App() {
 
   useEffect(() => {
     window.localStorage.setItem("todos", JSON.stringify(todos));
+    if (todos.length > 0) {
+      const activeCount = todos.filter(item => !item.completed).length
+      if (activeCount > 0) document.title = `There is ${activeCount} active todo's`
+      else document.title = 'Great Job! All todos are done'
+    } else document.title = 'Todo App'
   }, [todos]);
   const changeCompleted = (id) => {
     let copy = [...todos];
@@ -37,7 +41,6 @@ function App() {
   };
 
   useEffect(() => {
-    console.log('rendered1');
     if (selectedTitleSort === 'AZ') {
       if (selectedCompletionSort === 'OnlyCompleted' || selectedCompletionSort === 'OnlyUnCompleted') {
         let sorted = [...todosSorted].sort((a, b) => a.title.localeCompare(b.title))
@@ -70,7 +73,6 @@ function App() {
   }, [selectedTitleSort, todos])
 
   useEffect(() => {
-    console.log('rendered2');
     if (selectedCompletionSort === 'OnlyCompleted') {
       if (selectedTitleSort === 'AZ') {
         let filtered = todosSorted.filter(a => a.completed)
@@ -174,7 +176,7 @@ function App() {
     }
   }
   return (
-    <div className="App py-4 font-Montserrat sm:px-2 md:px-4 lg:px-10">
+    <div className="App py-4 font-Montserrat sm:px-2 md:px-4 lg:px-10 mb-6">
       <TodoForm setFirstLoad={setFirstLoad} addTodo={addTodo} />
       {!!todos.length && (
         <div className="sort mb-3 flex items-center mx-4 text-white">
@@ -215,7 +217,7 @@ function App() {
         href="https://t.me/andr3o"
         target="_blank"
         rel="noreferrer"
-        className="bug absolute right-3 bottom-3 select-none rounded-xl px-2 text-[#0f1014] transition-all duration-200 hover:bg-violet-400 hover:text-black max-[800px]:hidden"
+        className="bug fixed right-3 bottom-3 select-none rounded-xl px-2 text-transparent transition-all duration-200 hover:bg-violet-400 hover:text-black max-[800px]:hidden"
       >
         Found bug? contact me!
       </a>
