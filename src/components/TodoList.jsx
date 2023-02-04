@@ -8,7 +8,7 @@ const TodoList = ({ todos, filtered, changeCompleted, removeTodo, firstLoad }) =
             {todos.length ? (
                 todos.map((todo) => {
                     return (
-                        <Todo
+                        <Todo className='item'
                             todo={todo}
                             key={todo.id}
                             changeCompleted={changeCompleted}
@@ -17,11 +17,11 @@ const TodoList = ({ todos, filtered, changeCompleted, removeTodo, firstLoad }) =
                     );
                 })
             ) :
-                filtered ? (<div className="text-white text-4xl text-center py-4">Zero matches 🥺</div>)
+                filtered ? (<div className="todo text-white text-4xl text-center py-4">Zero matches 🥺</div>)
                     :
                     <div
                         className={`${firstLoad ? "hidden" : ""
-                            } flex flex-wrap items-center justify-center px-4`}
+                            } todo flex flex-wrap items-center justify-center px-4`}
                     >
                         <BiTask className="mr-5 text-5xl text-green-400" />
                         <span className="flex justify-center py-5 text-center text-4xl text-white">

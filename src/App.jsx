@@ -21,7 +21,8 @@ function App() {
     window.localStorage.setItem("todos", JSON.stringify(todos));
     if (todos.length > 0) {
       const activeCount = todos.filter(item => !item.completed).length
-      if (activeCount > 0) document.title = `There is ${activeCount} active todo's`
+      if (activeCount === 1) document.title = `${activeCount} active todo`
+      else if (activeCount > 0) document.title = `${activeCount} active todo's`
       else document.title = 'Great Job! All todos are done'
     } else document.title = 'Todo App'
   }, [todos]);

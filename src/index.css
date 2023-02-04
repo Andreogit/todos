@@ -9,3 +9,7 @@ body {
   margin: 0;
   background-color: #0f1014;
 }
+
+.remove-btn {
+  margin-right: 0.5rem;
+}

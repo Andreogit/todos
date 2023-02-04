@@ -6,6 +6,7 @@ import {
   RiDeleteBin7Fill,
 } from "react-icons/ri";
 const Todo = ({ todo, changeCompleted, removeTodo }) => {
+  console.count("Todo")
   const [hovered, setHovered] = useState(false);
   return (
     <div
