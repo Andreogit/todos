@@ -1,6 +1,6 @@
 # React Todo List
 
-[![Todos](https://lh3.google.com/u/1/d/1aR3s3q4Xd-S-U7veDMAQ-t4h2znLBCuG=w1868-h903-iv1)](https://andreogit.github.io/todos/)
+[![Todos](https://firebasestorage.googleapis.com/v0/b/justforstorage-34982.appspot.com/o/todologo.png?alt=media&token=e6eb8717-c141-4f1c-9cc1-ace0ca3a030e)](https://andreogit.github.io/todos/)
 
 ## Made with
 
